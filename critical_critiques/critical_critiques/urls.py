@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
-from django.conf.urls.static import static
+from django.views.static import serve
 from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -19,6 +19,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-)
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # Static files
+    url(r'^static/(?P<path>.*)$', serve,
+        kwargs={'document_root':settings.STATIC_ROOT})
+)
