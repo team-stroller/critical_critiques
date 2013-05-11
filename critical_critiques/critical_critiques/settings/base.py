@@ -189,10 +189,12 @@ THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
     'djcelery',
+    'social_auth',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'signin',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -232,7 +234,12 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-    }
+        'critical_critiques': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }
 ########## END LOGGING CONFIGURATION
 
@@ -246,3 +253,15 @@ WSGI_APPLICATION = 'wsgi.application'
 # See: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 djcelery.setup_loader()
 ########## END CELERY CONFIGURATION
+
+######### SOCIAL AUTH
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL = '/signin/'
+LOGIN_REDIRECT_URL = '/signin/done/'
+LOGIN_ERROR_URL    = '/signin/done/'
+
+######### END SOCIAL AUTH

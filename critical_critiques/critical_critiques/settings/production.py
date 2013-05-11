@@ -77,3 +77,10 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 # See: http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis
 BROKER_URL = get_env_setting('REDISCLOUD_URL')
 ########## END CELERY CONFIGURATION
+
+
+######### SOCIAL AUTH
+GITHUB_APP_ID = get_env_setting('GITHUB_APP_ID')
+GITHUB_API_SECRET = get_env_setting('GITHUB_API_SECRET')
+
+######### END SOCIAL AUTH
