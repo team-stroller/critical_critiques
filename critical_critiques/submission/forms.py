@@ -30,19 +30,26 @@ class SubmissionForm(ModelForm):
 
     # Valid Gist: https://gist.github.com/rmeritz/2863145
     def _clean_gist_url(self, url, path):
-        if not ((len(path) == 3) or (len(path) == 4 and path[3] == '')
-                and (path[0] == '') and path[2].isdigit()):
+        if not (self._is_valid_url_length(3, path)
+                and self._path_has_id(path, 2)):
             self._raise_url_error()
         return url
 
     # Valid Pull Request: https://github.com/basho/webmachine/pull/143
     def _clean_pull_request_url(self, url, path):
-        if not (len(path) == 5 or
-                (len(path) == 6 and path[5] == '') and
-                (path[0] == '') and
-                (path[3] == 'pull') and path[4].isdigit()):
+        if not (self._is_valid_url_length(5, path) and
+                self._path_has_id(path, 4) and
+                (path[3] == 'pull')):
             self._raise_url_error()
         return url
+
+    def _is_valid_url_length(self, length, path):
+        return (((len(path) == length) or
+                 (len(path) == (length + 1) and path[length] == '')) and
+                (path[0] == ''))
+
+    def _path_has_id(self, path, index):
+        return path[index].isdigit()
 
     def _raise_url_error(self):
         raise forms.ValidationError("Must be a valid Github Pull Request URL")
