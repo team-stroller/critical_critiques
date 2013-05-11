@@ -20,6 +20,9 @@ urlpatterns = patterns('',
     # Submission
     url(r'^submission/', include('submission.urls')),
 
+    # Review
+    url(r'^review/', include('review.urls')),
+
     # Static files
     url(r'^static/(?P<path>.*)$', serve,
         kwargs={'document_root':settings.STATIC_ROOT})

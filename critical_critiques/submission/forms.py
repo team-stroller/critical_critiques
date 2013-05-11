@@ -7,4 +7,4 @@ class SubmissionForm(ModelForm):
 
     class Meta:
         model = Submission
-        exclude = ('user')
+        exclude = ('user',)
