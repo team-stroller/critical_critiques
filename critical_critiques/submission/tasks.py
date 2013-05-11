@@ -8,5 +8,5 @@ class DeactivateExpiredSubmissions(PeriodicTask):
     run_every = datetime.timedelta(minutes=15)
 
     def run(self, *args, **kwargs):
-        submissions = Submission.objects.expired()
-        submissions.update(status='new', date_activated=None)
+        Submission.objects.expire_inactive()
+        
