@@ -194,7 +194,6 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'signin',
     'profiles',
     'submission',
 )
@@ -262,9 +261,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LOGIN_REDIRECT_URL = '/signin/'
 LOGIN_REDIRECT_URL = '/submission/'
-LOGIN_ERROR_URL    = '/signin/done/'
+LOGIN_ERROR_URL = '/'
 
 SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email', 'password', 'username', ]
 SOCIAL_AUTH_PIPELINE = (
