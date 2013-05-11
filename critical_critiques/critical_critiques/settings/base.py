@@ -255,8 +255,6 @@ djcelery.setup_loader()
 ########## END CELERY CONFIGURATION
 
 ######### AUTH
-AUTH_USER_MODEL = 'auth.models.User'
-
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.contrib.github.GithubBackend',
     'django.contrib.auth.backends.ModelBackend',
