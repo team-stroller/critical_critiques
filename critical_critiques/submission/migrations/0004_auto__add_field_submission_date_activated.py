@@ -60,6 +60,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Submission'},
             'date_activated': ('django.db.models.fields.DateTimeField', [], {'default': 'None', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'reviewer': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'reviews'", 'null': 'True', 'to': u"orm['auth.User']"}),
             'status': ('django.db.models.fields.CharField', [], {'default': "'new'", 'max_length': '15'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
