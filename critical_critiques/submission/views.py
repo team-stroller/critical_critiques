@@ -1,12 +1,17 @@
-from django.http import HttpResponseRedirect
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-#from social_auth.db.django_models import UserSocialAuth
-#from github3.api import login
-import logging
+from django.views.generic.edit import CreateView
 
-logger = logging.getLogger(__name__)
+from .forms import SubmissionForm
+from .models import Submission
 
-def dashboard(request):
-  context = RequestContext(request)
-  return render_to_response('dashboard.html', context)
+
+class SubmissionView(CreateView):
+    model = Submission
+    template_name = "dashboard.html"
+    form_class = SubmissionForm
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = self.request.user
+            form.save()
+        return super(SubmissionView, self).form_valid(form)

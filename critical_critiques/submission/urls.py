@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
+from .views import SubmissionView
 
 urlpatterns = patterns('',
-    url(r'^$', 'submission.views.dashboard', name='dashboard'),
+                       url(r'^$', SubmissionView.as_view()),
 )
