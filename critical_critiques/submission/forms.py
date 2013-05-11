@@ -1,15 +1,16 @@
 from urlparse import urlparse
 
 from django import forms
+from django.forms import ModelForm
 
 from .models import Submission
 
 
-class SubmissionForm(forms.ModelForm):
+class SubmissionForm(ModelForm):
 
     class Meta:
         model = Submission
-        exclude = ('user',)
+        exclude = ('user', 'status', 'reviewer')
 
     def clean_url(self):
         url = self.cleaned_data['url']
