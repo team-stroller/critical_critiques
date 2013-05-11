@@ -19,6 +19,8 @@
     {% block content %}
     {% endblock content %}
 
+    <a rel="nofollow" href="{% url "logout" %}">Logout</a>
+
     <!-- place project specific Javascript in this file -->
     <script src="{{ STATIC_URL }}js/project.js"></script>
 
