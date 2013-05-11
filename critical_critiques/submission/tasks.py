@@ -9,4 +9,3 @@ class DeactivateExpiredSubmissions(PeriodicTask):
 
     def run(self, *args, **kwargs):
         Submission.objects.expire_inactive()
-        
