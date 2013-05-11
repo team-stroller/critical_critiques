@@ -196,6 +196,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'signin',
     'profiles',
+    'submission',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -262,8 +263,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = '/signin/'
-LOGIN_REDIRECT_URL = '/signin/done/'
-LOGIN_ERROR_URL = '/signin/done/'
+LOGIN_REDIRECT_URL = '/submission/'
+LOGIN_ERROR_URL    = '/signin/done/'
 
 SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email', 'password', 'username', ]
 SOCIAL_AUTH_PIPELINE = (
