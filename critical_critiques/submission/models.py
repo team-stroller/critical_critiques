@@ -40,7 +40,8 @@ class Submission(models.Model):
                               max_length=15)
     date_activated = models.DateTimeField(default=None, blank=True,
                                           null=True)
-    reviewer = models.ForeignKey(User, related_name='reviews', null=True)
+    reviewer = models.ForeignKey(User, related_name='reviews', null=True,
+                                 blank=True)
     objects = SubmissionManager()
 
     def __unicode__(self):
