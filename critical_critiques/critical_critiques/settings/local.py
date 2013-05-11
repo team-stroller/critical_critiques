@@ -69,3 +69,10 @@ MIDDLEWARE_CLASSES += (
 # See: http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html#broker-redis
 BROKER_URL = 'redis://localhost:6379/0'
 ########## END CELERY CONFIGURATION
+
+
+######### SOCIAL AUTH
+GITHUB_APP_ID = '86a483896d08237f9062'
+GITHUB_API_SECRET = '8bc213d537311efb600445b667c7e294c5e8ffb9'
+
+######### END SOCIAL AUTH
