@@ -9,4 +9,4 @@ class DeactivateExpiredSubmissions(PeriodicTask):
 
     def run(self, *args, **kwargs):
         submissions = Submission.objects.expired()
-        submissions.udpdate(status='new', date_activated=None)
+        submissions.update(status='new', date_activated=None)

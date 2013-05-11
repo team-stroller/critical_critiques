@@ -17,7 +17,7 @@ class SubmissionManager(models.Manager):
 
         qs = self.get_query_set()
         expiration_date = datetime.datetime.now() - Submission._expiry_time
-        return qs.filter(date_activated__lte=expiration_date)
+        return qs.filter(date_activated__lte=expiration_date, status='active')
 
 class Submission(models.Model):
     _expiry_time = datetime.timedelta(hours=2)
@@ -31,7 +31,6 @@ class Submission(models.Model):
     url = models.URLField()
     status = models.CharField(choices=_status_options, default='new',
                               max_length=15)
-    created = models.DateTimeField(auto_now_add=True)
     date_activated = models.DateTimeField(default=None, blank=True,
                                           null=True)
     objects = SubmissionManager()
@@ -42,7 +41,9 @@ class Submission(models.Model):
     def active(self):
         now = datetime.datetime.now()
         # TODO: set reviewer=User
-        self.update(status='active', date_activated=now)
+        self.status = 'active'
+        self.date_activated = now
+        self.save()
 
     def deactivate(self):
         """
@@ -52,4 +53,5 @@ class Submission(models.Model):
         """
 
         # TODO: set reviewer=None
-        self.update(status='new', date_activated=None)
+        self.status = 'new'
+        self.date_activated = None
