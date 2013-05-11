@@ -9,7 +9,7 @@ class SubmissionManager(models.Manager):
     def next_random_avoiding(self, user):
         not_self = ~Q(user=user)
         submission = Submission.objects.filter(not_self,status='new').order_by('?')[0]
-        submission.active
+        submission.active_for(user)
         return submission
 
     def expired(self):
@@ -33,14 +33,15 @@ class Submission(models.Model):
                               max_length=15)
     date_activated = models.DateTimeField(default=None, blank=True,
                                           null=True)
+    reviewer = models.ForeignKey(User, related_name='reviews', null=True)
     objects = SubmissionManager()
 
     def __unicode__(self):
         return str(self.url)
 
-    def active(self):
+    def active_for(self, reviewer):
         now = datetime.datetime.now()
-        # TODO: set reviewer=User
+        self.reviewer = reviewer
         self.status = 'active'
         self.date_activated = now
         self.save()
@@ -52,6 +53,7 @@ class Submission(models.Model):
 
         """
 
-        # TODO: set reviewer=None
+        self.reviewer = None
         self.status = 'new'
         self.date_activated = None
+        self.save()
