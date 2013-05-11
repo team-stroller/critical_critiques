@@ -261,7 +261,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = '/signin/'
-LOGIN_REDIRECT_URL = '/signin/done/'
+LOGIN_REDIRECT_URL = '/submission/'
 LOGIN_ERROR_URL    = '/signin/done/'
 
 ######### END SOCIAL AUTH

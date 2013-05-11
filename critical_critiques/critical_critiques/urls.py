@@ -10,19 +10,15 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='base.html')),
 
-    # Examples:
-    # url(r'^$', 'critical_critiques.views.home', name='home'),
-    # url(r'^critical_critiques/', include('critical_critiques.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
     # Auth
     url(r'', include('social_auth.urls')),
     url(r'^signin/', include('signin.urls')),
+
+    # Submission
+    url(r'^submission/', include('submission.urls')),
 
     # Static files
     url(r'^static/(?P<path>.*)$', serve,
