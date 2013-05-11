@@ -189,6 +189,7 @@ THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
     'djcelery',
+    'social_auth',
 )
 
 # Apps specific for this project go here.
@@ -246,3 +247,12 @@ WSGI_APPLICATION = 'wsgi.application'
 # See: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 djcelery.setup_loader()
 ########## END CELERY CONFIGURATION
+
+### AUTH
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.contrib.github.GithubBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+GITHUB_APP_ID = '86a483896d08237f9062'
+GITHUB_API_SECRET = '8bc213d537311efb600445b667c7e294c5e8ffb9'
