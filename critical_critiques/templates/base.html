@@ -2,28 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}critical_critiques{% endblock title %}</title>
+    <title>{% block title %}Code Volley{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- This file store project specific CSS -->
     <link href="{{ STATIC_URL }}css/project.css" rel="stylesheet">
 
-    <!-- Use this to quickly test CSS changes in a template, 
+    <!-- Use this to quickly test CSS changes in a template,
         then move to project.css -->
     {% block extra_css %}{% endblock extra_css %}
   </head>
 
   <body>
-    <h1>CC</h1>
-
     {% block content %}
     {% endblock content %}
 
-    <a rel="nofollow" href="{% url "logout" %}">Logout</a>
+    <a id="logout" srel="nofollow" href="{% url "logout" %}"></a>
 
     <!-- place project specific Javascript in this file -->
+    <script src="{{ STATIC_URL }}js/jquery-2.0.0.min.js"></script>
     <script src="{{ STATIC_URL }}js/project.js"></script>
 
-    {% block extra_js %}{% endblock extra_js %}
+    <!-- <div class="footer">Made by TeamStroller for <a href="http://www.sthlmstartuphack.com/" target="_blank">Stockholm Startup Hack</div> -->
+    {% block extra_js %}
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-40853406-1', 'codevolley.com');
+          ga('send', 'pageview');
+
+        </script>
+    {% endblock extra_js %}
   </body>
 </html>

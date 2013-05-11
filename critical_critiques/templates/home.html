@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a rel="nofollow" href="{% url "socialauth_begin" "github" %}">Authorize Git</a>
+
+<div id="container">
+  <h1>
+    No one wants to review your code!
+    <div class="dark">
+      Let's fix that.
+    </div>
+  </h1>
+
+  <h2 class="pitch">
+    Each time you review someone else's code on Github, your code will be reviewed.
+  </h2>
+  <a class="button" rel="nofollow" href="{% url "socialauth_begin" "github" %}">Get started</a>
+</div>
+<img src="static/img/volleyball-logo.png" />
+
+
 {% endblock content %}

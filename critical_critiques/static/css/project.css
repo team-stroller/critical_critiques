@@ -1,8 +1,151 @@
 /*! project specific CSS goes here. */
 
 body {
-    background: mintcream;
-    color: #800000;
-    font-family: "open sans";
+  font-family: 'PT Sans', sans-serif;
+  margin: 100px;
+  background: #06b798; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #06b798 0%, #01b87f 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#06b798), color-stop(100%,#01b87f)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  #06b798 0%,#01b87f 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  #06b798 0%,#01b87f 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  #06b798 0%,#01b87f 100%); /* IE10+ */
+  background: linear-gradient(135deg,  #06b798 0%,#01b87f 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#06b798', endColorstr='#01b87f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+h1 {
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
+  line-height: 62px;
+  padding-top: 0px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+p {
+  margin: 0px;
+}
+
+ul {
+  padding: 0px;
+  list-style: none;
+}
+
+
+
+label { display: none;}
+
+#logout {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  width: 18px;
+  height: 20px;
+  background: url('../img/logout.png');
+}
+
+#container {
+  width: 470px;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0px auto;
+}
+
+.done {
+  display: none;
+}
+
+.ornament {
+  width: 20px;
+  height: 3px;
+  background: white;
+  margin: 20px 0px 40px 0px;
+}
+
+input {
+  width: 100%;
+  color: #04694d;
+  padding: 27px 20px;
+  font-size: 24px;
+  background: black;
+  border: none;
+  margin: 0px 0px 20px 0px;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+p.lol {
+  margin-bottom: 40px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #04694d;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #04694d;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #04694d;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #04694d;
+}
+
+.pitch {
+  height: 110px;
+}
+
+.dark {
+  color:#2b6951 !important;
+  display: inline;
+}
+
+a.dark:hover {
+  color: #06421f !important;
+}
+
+img {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  margin: 50px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 44px;
+  color: #2b6951;
+  width: 100%;
+}
+
+
+a { text-decoration: none;}
+a:visited {color: inherit;}
+
+
+.button {
+  width: inherit;
+  background: none;
+  border: 3px solid white;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button:hover {
+  color: #06b798;
+  background: white;
+  cursor: pointer;
 }
 
