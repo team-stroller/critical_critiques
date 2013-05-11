@@ -13,8 +13,9 @@ class ReviewView(UpdateView):
     success_url = reverse_lazy('home')
 
     def get_object(self, queryset=None):
+        user = self.request.user
         try:
-            return Submission.objects.next_random_avoiding(self.request.user)
+            return Submission.objects.next_random_avoiding(user)
         except IndexError:
             raise Http404
 

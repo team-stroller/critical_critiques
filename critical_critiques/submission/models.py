@@ -6,10 +6,16 @@ from django.contrib.auth.models import User
 class SubmissionManager(models.Manager):
     def next_random_avoiding(self, user):
         not_self = ~Q(user=user)
-        return Submission.objects.filter(not_self,status='new').order_by('?')[0]
+        submission = Submission.objects.filter(not_self,status='new').order_by('?')[0]
+        submission.active
+        return submission
 
 class Submission(models.Model):
-    _status_options = (('new', 'New'), ('reviewed', 'Reviewed'),)
+    _status_options = (
+        ('new', 'New'),
+        ('active', 'Active'),
+        ('reviewed', 'Reviewed'),
+        )
 
     user = models.ForeignKey(User)
     url = models.URLField()
@@ -19,3 +25,6 @@ class Submission(models.Model):
 
     def __unicode__(self):
         return str(self.url)
+
+    def active(self):
+        self.update(status='active')
