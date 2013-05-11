@@ -15,7 +15,7 @@ class Submission(models.Model):
         ('new', 'New'),
         ('active', 'Active'),
         ('reviewed', 'Reviewed'),
-        )
+    )
 
     user = models.ForeignKey(User)
     url = models.URLField()
