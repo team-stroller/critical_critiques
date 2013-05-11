@@ -2,11 +2,24 @@
 
 {% block content %}
 
-<a href="{{ submission.url }}" target="_blank">Take me to the code!</a>
+<div id="container">
+  <div id="step">
+    Step 2 of 2
+  </div>
+  <div class="ornament"></div>
 
-<form action="{% url 'create-review' %}" method="post">
-  {% csrf_token %}
-  <input type="submit" value="Done" />
-</form>
+  <div class="slide-content">
+      <p class="lol">Now go to Github and <a class="dark" href="{{ submission.url }}" target="_blank">review this pull request</a></p>
+      <form id="done-form"  action="{% url 'create-review' %}" method="post">
+        {% csrf_token %}
+        <input id="submit-code" class="button" type="submit" value="Done" />
+      </form>
+  </div>
+
+  <div class="done">
+    Thanks! Github will send you a notification when your code is reviewed. <br><a href="/submission" class="dark">Would you like to review more code?</a>
+  </div>
+</div>
+
 
 {% endblock content %}
