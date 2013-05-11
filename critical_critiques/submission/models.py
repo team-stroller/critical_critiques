@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Submission(models.Model):
-    _status_options = (('new', 'New'), ('review', 'Review'),)
+    _status_options = (('new', 'New'), ('reviewed', 'Reviewed'),)
 
     user = models.ForeignKey(User)
     url = models.URLField()

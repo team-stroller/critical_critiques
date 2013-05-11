@@ -1,9 +1,8 @@
 from django import forms
 
-from .models import Review
+from submission.models import Submission
 
 class ReviewForm(forms.ModelForm):
-
     class Meta:
-        model = Review
-        exclude = ('user', )
+        model = Submission
+        fields = []

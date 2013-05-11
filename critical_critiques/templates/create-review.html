@@ -6,6 +6,7 @@
 
 <form action="{% url 'create-review' %}" method="post">
   {% csrf_token %}
+  {{ form.instance }}
   {{ form.as_p }}
   <input type="submit" value="Submit" />
 </form>
