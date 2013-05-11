@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{{ submission.url }}" target="_blank">Take me to the code!</a>
+
+<form action="{% url 'create-review' %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Done" />
+</form>
+
+{% endblock content %}
