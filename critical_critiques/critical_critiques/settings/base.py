@@ -194,6 +194,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'signin',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -256,3 +257,5 @@ AUTHENTICATION_BACKENDS = (
 
 GITHUB_APP_ID = '86a483896d08237f9062'
 GITHUB_API_SECRET = '8bc213d537311efb600445b667c7e294c5e8ffb9'
+
+LOGIN_REDIRECT_URL = '/signin/'
