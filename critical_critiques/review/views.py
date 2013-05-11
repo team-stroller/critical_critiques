@@ -1,6 +1,7 @@
 from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q
+from django.http import Http404
 
 from submission.models import Submission
 
@@ -12,19 +13,14 @@ class ReviewView(UpdateView):
     form_class = ReviewForm
     success_url = reverse_lazy('home')
 
-    def get_form(self, form_class):
-        form = super(ReviewView, self).get_form(form_class)
-
-    def get_form_kwargs(self):
-        """Extend the context with a random Submission"""
-
-        kwargs = super(ReviewView, self).get_form_kwargs()
-        if 'instance' not in kwargs or kwargs['instance'] is None:
-            submission = (Submission.objects.filter(
-                ~Q(user=self.request.user),
-                status='new').order_by('?')[0])
-            kwargs['instance'] = submission
-        return kwargs
+    def get_object(self, queryset=None):
+        not_self = ~Q(user=self.request.user)
+        try:
+            submission = Submission.objects.filter(not_self,status='new').order_by('?')[0]
+        except IndexError:
+            # show empty state
+            raise Http404
+        return submission
 
     def form_valid(self, form):
         if form.is_valid():

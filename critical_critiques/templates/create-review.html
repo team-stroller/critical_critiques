@@ -2,13 +2,11 @@
 
 {% block content %}
 
-<p>You're reviewing {{ submission.url }}</p>
+<a href="{{ submission.url }}" target="_blank">Take me to the code!</a>
 
 <form action="{% url 'create-review' %}" method="post">
   {% csrf_token %}
-  {{ form.instance }}
-  {{ form.as_p }}
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Done" />
 </form>
 
 {% endblock content %}
