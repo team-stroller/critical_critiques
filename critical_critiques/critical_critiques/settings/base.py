@@ -234,7 +234,12 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-    }
+        'critical_critiques': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }
 ########## END LOGGING CONFIGURATION
 
@@ -259,3 +264,5 @@ GITHUB_APP_ID = '86a483896d08237f9062'
 GITHUB_API_SECRET = '8bc213d537311efb600445b667c7e294c5e8ffb9'
 
 LOGIN_REDIRECT_URL = '/signin/'
+LOGIN_REDIRECT_URL = '/signin/done/'
+LOGIN_ERROR_URL    = '/signin/done/'
