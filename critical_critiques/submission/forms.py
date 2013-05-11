@@ -16,7 +16,7 @@ class SubmissionForm(ModelForm):
         url = self.cleaned_data['url']
         parsed_url = urlparse(url)
         if not (parsed_url.scheme == 'https'):
-            raise forms.ValidationError("Must be a https")
+            raise forms.ValidationError("Must be a HTTPS URL")
         if parsed_url.params or parsed_url.query or parsed_url.fragment:
             self._raise_url_error()
         domain = parsed_url.netloc
