@@ -22,7 +22,7 @@ INSTALLED_APPS += ('gunicorn',)
 
 ########## HOSTS CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['critical-critiques.herokuapp.com']
+ALLOWED_HOSTS = ['critical-critiques.herokuapp.com', 'codevolley.com', 'www.codevolley.com']
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
