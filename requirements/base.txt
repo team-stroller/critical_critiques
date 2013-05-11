@@ -9,4 +9,3 @@ django-celery-with-redis==3.0
 django-celery==3.0.17
 django-social-auth==0.7.23
 github3.py==0.6.1
-django-social-auth==0.7.23
