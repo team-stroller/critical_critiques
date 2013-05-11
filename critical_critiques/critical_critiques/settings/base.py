@@ -254,7 +254,7 @@ WSGI_APPLICATION = 'wsgi.application'
 djcelery.setup_loader()
 ########## END CELERY CONFIGURATION
 
-######### SOCIAL AUTH
+######### AUTH
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.contrib.github.GithubBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -262,6 +262,16 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = '/signin/'
 LOGIN_REDIRECT_URL = '/signin/done/'
-LOGIN_ERROR_URL    = '/signin/done/'
+LOGIN_ERROR_URL = '/signin/done/'
 
-######### END SOCIAL AUTH
+SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email', 'password', 'username', ]
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details',
+)
+######### END AUTH
