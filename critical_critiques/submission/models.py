@@ -7,7 +7,7 @@ class SubmissionManager(models.Manager):
     def next_random_avoiding(self, user):
         not_self = ~Q(user=user)
         submission = Submission.objects.filter(not_self,status='new').order_by('?')[0]
-        submission.active
+        submission.active_for(user)
         return submission
 
 class Submission(models.Model):
@@ -21,10 +21,13 @@ class Submission(models.Model):
     url = models.URLField()
     status = models.CharField(choices=_status_options, default='new',
                               max_length=15)
+    reviewer = models.ForeignKey(User, related_name='reviews', null=True)
     objects = SubmissionManager()
 
     def __unicode__(self):
         return str(self.url)
 
-    def active(self):
-        self.update(status='active')
+    def active_for(self, reviewer):
+        self.status = 'active'
+        self.reviewer = reviewer
+        self.save()
