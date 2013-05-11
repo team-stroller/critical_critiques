@@ -77,5 +77,5 @@ GITHUB_API_SECRET = '8bc213d537311efb600445b667c7e294c5e8ffb9'
 ######### END SOCIAL AUTH
 
 ######### STATIC FILE CONFIGURATION
-STATIC_ROOT = normpath(join(SITE_ROOT, 'static'))
+#STATIC_ROOT = normpath(join(SITE_ROOT, 'static'))
 ######### END STATIC FILE CONFIGURATION
